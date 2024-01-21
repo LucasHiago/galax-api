@@ -23,7 +23,7 @@ export class UsersService {
 
   async findOne(id: number): Promise<User> {
     const user = await this.userRepository.findOne({
-      where: { id }
+      where: { user_id: id }
     });
     if (!user) {
       throw new NotFoundException(`User with ID "${id}" not found`);
@@ -33,7 +33,7 @@ export class UsersService {
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const user = await this.userRepository.preload({
-      id: id,
+      user_id: id,
       ...updateUserDto,
     });
 
