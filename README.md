@@ -24,6 +24,17 @@ This project focus on an API with Nestjs
 $ npm install
 ```
 
+## Docker Use
+### Docker Build
+```bash
+$ docker-compose up --build
+```
+
+### Docker Run
+```bash
+$ docker-compose up
+```
+
 ## Running the app
 
 ```bash
