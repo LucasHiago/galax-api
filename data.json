@@ -5,7 +5,8 @@
     "email": "Email",
     "password": "MD5",
     "contact_number": "Number Pattern +COD (XX) X XXXX-XXXX",
-    "address": "String"
+    "address": "String",
+    "role": "String"
   },
   "Products": {
     "product_id": "Primary Key",

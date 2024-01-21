@@ -1,18 +1,35 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsString, IsPhoneNumber, IsEnum } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { UserRole } from './role-user.enum'; 
 
 export class CreateUserDto {
-  @ApiProperty()
+  @ApiProperty({ description: 'Identificador único do usuário' })
+  @IsString()
+  user_id: string; 
+
+  @ApiProperty({ description: 'Nome do usuário' })
   @IsString()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Endereço de e-mail' })
   @IsEmail()
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Senha do usuário' })
   @IsString()
-  @MinLength(6)
   password: string;
 
+  @ApiProperty({ description: 'Número de contato do usuário' })
+  @IsPhoneNumber(null)
+  @Transform(({ value }) => value.replace(/[^\d+]/g, ''))
+  contact_number: string;
+
+  @ApiProperty({ description: 'Endereço residencial do usuário' })
+  @IsString()
+  address: string;
+
+  @ApiProperty({ enum: UserRole, description: 'Permissão do usuário' })
+  @IsEnum(UserRole)
+  role: UserRole;
 }
