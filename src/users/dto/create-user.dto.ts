@@ -4,10 +4,6 @@ import { Transform } from 'class-transformer';
 import { UserRole } from './role-user.enum'; 
 
 export class CreateUserDto {
-  @ApiProperty({ description: 'Identificador único do usuário' })
-  @IsString()
-  user_id: string; 
-
   @ApiProperty({ description: 'Nome do usuário' })
   @IsString()
   name: string;
