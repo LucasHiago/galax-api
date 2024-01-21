@@ -17,12 +17,14 @@ import { UsersService } from './users/service/users.service';
         username: config.get('POSTGRES_USER'),
         password: config.get('POSTGRES_PASSWORD'),
         database: config.get('POSTGRES_DB'),
+        autoLoadEntities: true,
+        synchronize: true
       }),
       inject: [ConfigService],
     }),
     UsersModule,
   ],
-  controllers: [AppController, UsersController],
-  providers: [UsersService],
+  controllers: [AppController],
+  providers: [],
 })
 export class AppModule {}
