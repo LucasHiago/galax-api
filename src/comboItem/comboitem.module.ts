@@ -10,6 +10,7 @@ import { ServicesModule } from 'src/services/services.module';
   imports: [TypeOrmModule.forFeature([ComboItem]), ProductModule, ServicesModule],
   controllers: [ComboItemController],
   providers: [ComboItemService],
+  exports: [ComboItemService]
 })
 
 export class ComboItemModule {}
