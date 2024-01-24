@@ -10,6 +10,7 @@ import { ComboItemModule } from './comboItem/comboitem.module';
 import { BudgetModule } from './budgets/budget.module';
 import { OrderModule } from './orders/orders.module';
 import { OrderItemModule } from './orderItem/orderitem.module';
+import { BothModule } from './bothProducts/both.module';
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import { OrderItemModule } from './orderItem/orderitem.module';
     ComboItemModule,
     BudgetModule,
     OrderModule,
-    OrderItemModule
+    OrderItemModule,
+    BothModule
   ],
   controllers: [AppController],
   providers: [],

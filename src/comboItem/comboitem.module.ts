@@ -3,11 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ComboItemController } from './controller/comboitem.controller';
 import { ComboItemService } from './service/comboitem.service';
 import { ComboItem } from './entities/comboitem.entity';
-import { Product } from '../products/entities/product.entity';
-import { Services } from '../services/entities/services.entity';
+import { ProductModule } from 'src/products/product.module';
+import { ServicesModule } from 'src/services/services.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ComboItem, Product, Services])],
+  imports: [TypeOrmModule.forFeature([ComboItem]), ProductModule, ComboItemModule, ServicesModule],
   controllers: [ComboItemController],
   providers: [ComboItemService],
 })
