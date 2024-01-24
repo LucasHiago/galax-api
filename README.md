@@ -10,11 +10,11 @@ This project focus on an API with Nestjs
 ## First Step
  [x] Make a json file to compose our database design schema interfaces and entities
  [] Make migrations and seeds
- [] Make Nestjs base environment
- [] Make by cli structure SOLID
+ [x] Make Nestjs base environment
+ [x] Make by cli structure SOLID
 
 ## Documentation Step
- [] Document the API (SWAGGER)
+ [x] Document the API (SWAGGER)
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
