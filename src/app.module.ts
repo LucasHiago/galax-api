@@ -3,8 +3,14 @@ import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
-import { UsersController } from './users/controllers/users.controller';
-import { UsersService } from './users/service/users.service';
+import { ProductModule } from './products/product.module';
+import { ServicesModule } from './services/services.module';
+import { CombosModule } from './combos/combos.module';
+import { ComboItemModule } from './comboItem/comboitem.module';
+import { BudgetModule } from './budgets/budget.module';
+import { OrderModule } from './orders/orders.module';
+import { OrderItemModule } from './orderItem/orderitem.module';
+import { BothModule } from './bothProducts/both.module';
 
 @Module({
   imports: [
@@ -23,6 +29,14 @@ import { UsersService } from './users/service/users.service';
       inject: [ConfigService],
     }),
     UsersModule,
+    ProductModule,
+    ServicesModule,
+    CombosModule,
+    ComboItemModule,
+    BudgetModule,
+    OrderModule,
+    OrderItemModule,
+    BothModule
   ],
   controllers: [AppController],
   providers: [],

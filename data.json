@@ -5,7 +5,8 @@
     "email": "Email",
     "password": "MD5",
     "contact_number": "Number Pattern +COD (XX) X XXXX-XXXX",
-    "address": "String"
+    "address": "String",
+    "role": "String"
   },
   "Products": {
     "product_id": "Primary Key",
@@ -18,13 +19,15 @@
     "service_id": "Primary Key",
     "name": "String",
     "description": "Long Text",
-    "price": "Currency"
+    "price": "Currency",
+    "stock_quantity": "Integer"
   },
   "Combos": {
     "combo_id": "Primary Key",
     "name": "String",
     "description":"Long Text",
-    "price": "Currency"
+    "price": "Currency",
+    "stock_quantity": "Integer"
   },
   "Combo_items": {
     "combo_id": "Foreing Key",
