@@ -9,6 +9,7 @@ import { CombosModule } from './combos/combos.module';
 import { ComboItemModule } from './comboItem/comboitem.module';
 import { BudgetModule } from './budgets/budget.module';
 import { OrderModule } from './orders/orders.module';
+import { OrderItemModule } from './orderItem/orderitem.module';
 
 @Module({
   imports: [
@@ -32,7 +33,8 @@ import { OrderModule } from './orders/orders.module';
     CombosModule,
     ComboItemModule,
     BudgetModule,
-    OrderModule
+    OrderModule,
+    OrderItemModule
   ],
   controllers: [AppController],
   providers: [],
