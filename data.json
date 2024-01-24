@@ -19,13 +19,15 @@
     "service_id": "Primary Key",
     "name": "String",
     "description": "Long Text",
-    "price": "Currency"
+    "price": "Currency",
+    "stock_quantity": "Integer"
   },
   "Combos": {
     "combo_id": "Primary Key",
     "name": "String",
     "description":"Long Text",
-    "price": "Currency"
+    "price": "Currency",
+    "stock_quantity": "Integer"
   },
   "Combo_items": {
     "combo_id": "Foreing Key",
