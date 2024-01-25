@@ -8,9 +8,9 @@ export class ComboItem {
   @PrimaryGeneratedColumn()
   combo_id: number;
 
-  @ManyToOne(() => Product, { nullable: true })
-  product: Product;
+  @ManyToOne(() => Product, { nullable: true, lazy: true })
+  product: Promise<Product>;
 
-  @ManyToOne(() => Services, { nullable: true })
-  service: Services;
+  @ManyToOne(() => Services, { nullable: true, lazy: true })
+  service: Promise<Services>;
 }
