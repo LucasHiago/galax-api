@@ -1,5 +1,5 @@
-import { BothDto } from "../dto/both.dto";
+import { GenericItemDto } from "../dto/genericItemDto.dto";
 
 export interface IBothService {
-  findAll(): Promise<BothDto>;
+  findAll(): Promise<GenericItemDto[]>;
 }

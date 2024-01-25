@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { BothService } from '../service/both.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { BothItems } from '../entities/both.entity';
+import { GenericItemDto } from '../dto/genericItemDto.dto';
 
 @ApiTags('both')
 @Controller('both')
@@ -10,8 +10,8 @@ export class BothController {
 
   @Get()
   @ApiOperation({ summary: 'Get aggregated data of products, services, and combos' })
-  @ApiResponse({ status: 200, type: [BothItems] })
-  findAll() {
+  @ApiResponse({ status: 200, type: [GenericItemDto] })
+  async findAll(): Promise<GenericItemDto[]> {
     return this.bothService.findAll();
   }
 }
