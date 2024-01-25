@@ -1,8 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsString } from 'class-validator';
 
 export class CreateBudgetDto {
   @ApiProperty({ description: 'ID da sessão do navegador' })
   session_id: string;
+
+  @ApiProperty({ description: 'Nome do usuário' })
+  @IsString()
+  name: string;
+
+  @ApiProperty({ description: 'Endereço de e-mail' })
+  @IsEmail()
+  email: string;
 
   @ApiProperty({ description: 'ID do produto', required: false })
   productId?: number;
