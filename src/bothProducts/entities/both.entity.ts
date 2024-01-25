@@ -2,7 +2,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Product } from '../../products/entities/product.entity';
 import { Services } from '../../services/entities/services.entity';
-import { Combos } from 'src/combos/entities/combos.entity';
+import { Combos } from '../../combos/entities/combos.entity';
 
 @Entity()
 export class BothItems {
