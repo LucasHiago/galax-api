@@ -27,7 +27,7 @@ export class ComboItemService implements IComboItemService {
       if (!product) {
         throw new NotFoundException(`Product with ID "${createComboItemDto.productId}" not found`);
       }
-      comboItem.product = product;
+      comboItem.product = Promise.resolve(product);
     }
 
     if (createComboItemDto.serviceId) {
@@ -35,7 +35,7 @@ export class ComboItemService implements IComboItemService {
       if (!service) {
         throw new NotFoundException(`Service with ID "${createComboItemDto.serviceId}" not found`);
       }
-      comboItem.service = service;
+      comboItem.service = Promise.resolve(service);
     }
 
     return this.comboItemRepository.save(comboItem);
