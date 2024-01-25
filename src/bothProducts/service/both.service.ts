@@ -3,9 +3,10 @@ import { ProductService } from '../../products/service/product.service';
 import { servicesService } from '../../services/service/services.service';
 import { ComboItemService } from '../../comboItem/service/comboitem.service';
 import { BothDto } from '../dto/both.dto';
+import { IBothService } from '../interface/both.interface';
 
 @Injectable()
-export class BothService {
+export class BothService implements IBothService {
   constructor(
     private productService: ProductService,
     private serviceService: servicesService,

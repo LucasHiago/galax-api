@@ -7,8 +7,10 @@ import { ProductModule } from 'src/products/product.module';
 import { ServicesModule } from 'src/services/services.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ComboItem]), ProductModule, ComboItemModule, ServicesModule],
+  imports: [TypeOrmModule.forFeature([ComboItem]), ProductModule, ServicesModule],
   controllers: [ComboItemController],
   providers: [ComboItemService],
+  exports: [ComboItemService]
 })
+
 export class ComboItemModule {}

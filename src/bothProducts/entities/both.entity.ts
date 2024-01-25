@@ -10,11 +10,11 @@ export class BothItems {
   both_id: number;
 
   @ManyToOne(() => Product, { nullable: true })
-  product: Product;
+  products: Product;
 
   @ManyToOne(() => Services, { nullable: true })
-  service: Services;
+  services: Services;
 
   @ManyToOne(() => Combos, { nullable: true })
-  combo: Combos;
+  combos: Combos;
 }
