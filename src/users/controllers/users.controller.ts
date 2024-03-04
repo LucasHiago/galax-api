@@ -1,9 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException, Headers, UseGuards } from '@nestjs/common';
 import { UsersService } from '../service/users.service';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { User } from '../entities/user.entity';
-import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, ApiOperation, ApiHeader, ApiBearerAuth } from '@nestjs/swagger';
+import { SkipAuth } from 'src/common/decorators/skipAuth.decorator';
+import { AccessKeyGuard } from 'src/common/guards/userAcess.guard';
+import { RolesGuard } from 'src/common/guards/roles.guard';
+import { NoRoles } from 'src/common/decorators/noRoles.decorator';
 
 @ApiTags('users')
 @Controller('users')
@@ -11,6 +15,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
+  @SkipAuth()
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({ status: 201, description: 'The record has been successfully created.', type: User })
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
@@ -18,8 +23,15 @@ export class UsersController {
   }
 
   @Get()
+  @NoRoles()
+  @UseGuards(RolesGuard, AccessKeyGuard)
   @ApiOperation({ summary: 'Get all users' })
+  @ApiHeader({
+    name: 'accessKey',
+    description: 'Key special access'
+  })
   @ApiResponse({ status: 200, description: 'Return all users.', type: [User] })
+  @ApiBearerAuth('JWT-auth')
   async findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }

@@ -4,16 +4,34 @@ import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
+import * as bcrypt from 'bcryptjs';
+import { AccessKeyService } from 'src/acessKey/service/acessKey.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    private accessKeyService: AccessKeyService
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const user = this.userRepository.create(createUserDto);
+    const { password } = createUserDto;
+
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // const isValidKey = await this.accessKeyService.validateKey(acessKey);
+
+    // if(!isValidKey) {
+    //   return null;
+    // }
+    
+    const user = this.userRepository.create({
+      ...createUserDto,
+      password: hashedPassword
+    });
+    
     return this.userRepository.save(user);
   }
 
@@ -28,6 +46,16 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException(`User with ID "${id}" not found`);
     }
+    return user;
+  }
+
+  async findUser(action: string): Promise<User> {
+    const user: any = await this.userRepository.createQueryBuilder('user')
+      .where('user.name = :action OR user.email = :action', { action })
+      .getOne();
+
+    if(!user) throw new NotFoundException(`User not found: ${action}`);
+    
     return user;
   }
 

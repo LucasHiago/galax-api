@@ -11,7 +11,7 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 8832
-      POSTGRES_DB: galax_db
+      POSTGRES_DB: fashion_db
   db:
     build:
       context: .
@@ -19,7 +19,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: galax_db
+      POSTGRES_DB: fashion_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 8832
     volumes:

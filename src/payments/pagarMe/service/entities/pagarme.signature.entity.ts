@@ -1,11 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { UserRole } from '../dto/role-user.enum';
-import { AccessKey } from 'src/acessKey/entities/acessKey.entity';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  user_id: number;
+  signature_id: number;
 
   @Column()
   name: string;
@@ -21,10 +19,4 @@ export class User {
 
   @Column()
   address: string;
-
-  @Column({ type: 'enum', enum: UserRole })
-  role: UserRole;
-
-  @OneToMany(() => AccessKey, accessKey => accessKey.vinculatedUser)
-  accessKey: AccessKey;
 }
